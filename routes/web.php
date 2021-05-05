@@ -23,10 +23,12 @@ $router->get('/key', function(){
 
 $router->get('/buku', 'BooksController@index');
 
-$router->get('/bukus/{kategori}', 'BooksController@Kategori');
+$router->get('/books/{id}', 'BooksController@getId');
 
-$router->post('/buku', 'BooksController@post');
+$router->get('/bukus/{judul}', 'BooksController@getJudul');
 
-$router->put('/bukus/{id}', 'BooksController@put');
+$router->post('/buku', 'BooksController@createBuku');
 
-$router->delete('/bukus/{id}', 'BooksController@destroy');
+$router->put('/books/{id}', 'BooksController@updateBuku');
+
+$router->delete('/books/{id}', 'BooksController@deletebyId');
