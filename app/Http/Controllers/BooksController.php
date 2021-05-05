@@ -14,16 +14,16 @@ public function index()
 }
 
 public function Kategori($kategori){
-    $book = Book::where('kategori', $kategori)->get();
-        if ($book) {
+    $buku = Book::where('kategori', $kategori)->get();
+        if ($buku) {
             return 
             response()->json([
-                'message' => 'tampil book by kategori',
-                'data' => $book ], 201);
+                'message' => 'tampil buku by kategori',
+                'data' => $buku ], 201);
             
         } else {
             return response()->json([
-                'message' => 'Book Not Found',
+                'message' => 'buku tidak ada',
             ], 404);
         }
     }
@@ -36,53 +36,53 @@ public function post (Request $request){
         'stock' => 'required'
     ]);
 
-    $book = Book::create(
+    $buku = Book::create(
         $request->only(['judul', 'penulis', 'kategori', 'stock'])
     );
 
     return response()->json([
        'updated'=>true,
-       'data'=>$book
+       'data'=>$buku
    ], 200);
     }
 
     public function put(Request $request, $id){
         try {
-            $book = Book::findOrFail ($id);
+            $buku = Book::findOrFail ($id);
         } catch (ModelNotFoundException $e){
             return response()->json([
-                'message' => 'book not found'
+                'message' => 'buku tidak ada'
             ], 404);
         }
     
 
-    $book->fill (
+    $buku->fill (
         $request->only(['judul', 'penulis', 'kategori', 'stock'])
     );
 
-    $book->save();
+    $buku->save();
 
     return response()->json([
         'created' => true,
-        'data' => $book
+        'data' => $buku
     ], 200);
     }
 
     public function destroy($id){
         try{
-            $book = Book::findOrFail($id);
+            $buku = Book::findOrFail($id);
         } catch (ModelNotFoundException $e){
             return response()->json([
                 'error' => [
-                    'message' => 'book not found'
+                    'message' => 'buku gagal dihapus'
                 ]
                 ], 404);
         }
 
-        $book->delete();
+        $buku->delete();
 
         return response()->json([
-            'deleted' => true
+            'buku berhasil di hapus' => true
         ], 200);
     }
 }
