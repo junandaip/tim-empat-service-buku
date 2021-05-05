@@ -18,12 +18,12 @@ public function getId($id){
         if ($book) {
             return 
             response()->json([
-                'message' => 'show book by id',
+                'message' => 'menampilkan book by id',
                 'data' => $book ], 201);
             
         } else {
             return response()->json([
-                'message' => 'Book Not Found',
+                'message' => 'buku tidak ada',
             ], 404);
         }
     }
