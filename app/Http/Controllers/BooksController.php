@@ -18,7 +18,7 @@ public function Kategori($kategori){
         if ($book) {
             return 
             response()->json([
-                'message' => 'show book by kategori',
+                'message' => 'tampil book by kategori',
                 'data' => $book ], 201);
             
         } else {
