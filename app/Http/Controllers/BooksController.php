@@ -14,7 +14,7 @@ public function index()
 }
 
 public function Kategori($kategori){
-    $book = Book::where('kategori', $kategori)->first();
+    $book = Book::where('kategori', $kategori)->get();
         if ($book) {
             return 
             response()->json([
@@ -22,7 +22,7 @@ public function Kategori($kategori){
                 'data' => $book ], 201);
             
         } else {
-            return response()->link([
+            return response()->json([
                 'message' => 'Book Not Found',
             ], 404);
         }
