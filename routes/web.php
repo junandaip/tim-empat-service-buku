@@ -24,12 +24,12 @@ $router->get('/key', function(){
 
 $router->get('/buku', 'BooksController@index');
 
-$router->get('/bukus/{id}', 'BooksController@getId');
+$router->get('/books/{id}', 'BooksController@getId');
 
 $router->get('/bukus/{judul}', 'BooksController@getJudul');
 
 $router->post('/buku', 'BooksController@createBuku');
 
-$router->put('/bukus/{id}', 'BooksController@updateBuku');
+$router->put('/books/{id}', 'BooksController@updateBuku');
 
-$router->delete('/bukus/{id}', 'BooksController@deletebyId');
+$router->delete('/books/{id}', 'BooksController@deletebyId');
