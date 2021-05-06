@@ -21,14 +21,14 @@ $router->get('/key', function(){
     return str_random(32);
 });
 
-$router->get('/buku', 'BooksController@index');
+$router->get('/books', 'BooksController@index');
 
-$router->get('/bukus/{id}', 'BooksController@getId');
+$router->get('/book/id/{id}', 'BooksController@getId');
 
-$router->get('/bukus/{judul}', 'BooksController@getJudul');
+$router->get('/book/judul/{judul}', 'BooksController@getJudul');
 
-$router->post('/buku', 'BooksController@createBuku');
+$router->post('/book', 'BooksController@createBuku');
 
-$router->put('/bukus/{id}', 'BooksController@updateBuku');
+$router->put('/book/{id}', 'BooksController@updateBuku');
 
-$router->delete('/bukus/{id}', 'BooksController@deletebyId');
+$router->delete('/book/{id}', 'BooksController@deletebyId');
