@@ -31,6 +31,9 @@ public function getId($id){
 
 //menampilkan data byJudul
 public function getJudul($judul){
+
+    $judul = urldecode($judul);
+    
     $buku = Book::where('judul', $judul)->first();
         if ($buku) {
             return 
