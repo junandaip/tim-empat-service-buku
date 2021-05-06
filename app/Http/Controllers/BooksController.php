@@ -34,7 +34,7 @@ public function getJudul($judul){
 
     $judul = urldecode($judul);
     
-    $buku = Book::where('judul', $judul)->first();
+    $buku = Book::where('judul', 'LIKE', '%'.$judul.'%')->get();
         if ($buku) {
             return 
             response()->json([
