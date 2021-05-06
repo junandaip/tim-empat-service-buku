@@ -13,13 +13,14 @@ public function index()
     return Book::all();
 }
 
+//menampilkan data byId
 public function getId($id){
-    $book = Book::where('id', $id)->first();
-        if ($book) {
+    $buku = Book::where('id', $id)->first();
+        if ($buku) {
             return 
             response()->json([
-                'message' => 'menampilkan book by id',
-                'data' => $book ], 201);
+                'message' => 'menampilkan buku by id',
+                'data' => $buku ], 201);
             
         } else {
             return response()->json([
@@ -27,7 +28,8 @@ public function getId($id){
             ], 404);
         }
     }
-    
+
+//menampilkan data byJudul
 public function getJudul($judul){
     $buku = Book::where('judul', $judul)->first();
         if ($buku) {
@@ -43,6 +45,7 @@ public function getJudul($judul){
         }
     }
 
+//membuat data buku
 public function createBuku (Request $request){
     $this->validate($request, [ 
         'judul' => 'required',
@@ -61,7 +64,8 @@ public function createBuku (Request $request){
    ], 200);
     }
 
-    public function updateBuku(Request $request, $id){
+//mengupdate data buku
+public function updateBuku(Request $request, $id){
         try {
             $buku = Book::findOrFail ($id);
         } catch (ModelNotFoundException $e){
@@ -83,7 +87,8 @@ public function createBuku (Request $request){
     ], 200);
     }
 
-    public function deletebyId($id){
+//menghapus data buku byId
+public function deletebyId($id){
         try{
             $buku = Book::findOrFail($id);
         } catch (ModelNotFoundException $e){
