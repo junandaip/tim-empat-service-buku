@@ -21,7 +21,6 @@ $router->get('/key', function(){
     return str_random(32);
 });
 
-
 $router->get('/buku', 'BooksController@index');
 
 $router->get('/bukus/{id}', 'BooksController@getId');
