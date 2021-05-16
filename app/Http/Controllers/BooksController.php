@@ -20,7 +20,7 @@ public function getId($id){
             return 
             response()->json([
                 'message' => 'menampilkan buku by id',
-                'data' => $buku ], 201);
+                'data' => $buku ], 200);
             
         } else {
             return response()->json([
@@ -39,7 +39,7 @@ public function getJudul($judul){
             return 
             response()->json([
                 'message' => 'tampil buku by judul',
-                'data' => $buku ], 201);
+                'data' => $buku ], 200);
             
         } else {
             return response()->json([
@@ -64,7 +64,7 @@ public function createBuku (Request $request){
     return response()->json([
        'updated'=>true,
        'data'=>$buku
-   ], 200);
+   ], 201);
     }
 
 //mengupdate data buku
