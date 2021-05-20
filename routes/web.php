@@ -15,13 +15,13 @@
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
-});
+}); 
 
 $router->get('/key', function(){
     return str_random(32);
 });
 
-$router->get('/books', 'BooksController@index');
+$router->get('/book', 'BooksController@index');
 
 $router->get('/book/id/{id}', 'BooksController@getId');
 

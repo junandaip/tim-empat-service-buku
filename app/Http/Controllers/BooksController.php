@@ -20,7 +20,7 @@ public function getId($id){
             return 
             response()->json([
                 'message' => 'menampilkan buku by id',
-                'data' => $buku ], 201);
+                'data' => $buku ], 200);
             
         } else {
             return response()->json([
@@ -31,13 +31,15 @@ public function getId($id){
 
 //menampilkan data byJudul
 public function getJudul($judul){
+
     $judul = urldecode($judul);
-    $buku = Book::where('judul', $judul)->first();
+    
+    $buku = Book::where('judul', 'LIKE', '%'.$judul.'%')->get();
         if ($buku) {
             return 
             response()->json([
                 'message' => 'tampil buku by judul',
-                'data' => $buku ], 201);
+                'data' => $buku ], 200);
             
         } else {
             return response()->json([
@@ -62,7 +64,7 @@ public function createBuku (Request $request){
     return response()->json([
        'updated'=>true,
        'data'=>$buku
-   ], 200);
+   ], 201);
     }
 
 //mengupdate data buku
@@ -75,7 +77,6 @@ public function updateBuku(Request $request, $id){
             ], 404);
         }
     
-
     $buku->fill (
         $request->only(['judul', 'penulis', 'kategori', 'stock'])
     );
